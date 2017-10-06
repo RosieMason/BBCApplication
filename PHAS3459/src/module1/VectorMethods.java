@@ -24,32 +24,21 @@ public class VectorMethods {
 		//a.b = |a||b|cos(theta)
 		t= dotProduct(a, b, c, d, e, f) / ( magnitude(a, b, c) * magnitude (d, e, f));
 		return t;
+		
 	}
 		
 	public static void main(String[] args) {
 		VectorMethods vm = new VectorMethods();
 		
-		//define variables for 1st set of vectors
-		double a1 = 2;
-		double b1 = 3;
-		double c1 = 4;
-		double d1 = 1;
-		double e1 = 3;
-		double f1 = 2;
-		
-		//define variables for 2nd set of vectors 
-		double d2 = 0;
-		double e2 = 0;
-		double f2 = 0;
-		
-		//Find the angles between vectors
-		double angle1 = Math.acos(vm.angle(a1, b1, c1, d1, e1, f1));
-		double angle2 = Math.acos(vm.angle(a1, b1, c1, d2, e2, f2));
+		//Find the angles between vectors (2, 3, 4) and (1, 2, 3)
+		double angle1 = Math.acos(vm.angle(2, 3, 4, 1, 2, 3));
+		//Find the andles between vectors (2, 3, 4) and (0, 0, 0)
+		double angle2 = Math.acos(vm.angle(2, 3, 4, 0, 0, 0));
 		
 		System.out.println("The value of the angle between vectors (2, 3, 4) and (1, 3, 2) is "+angle1+" radians"); 
 		System.out.println("The value of the angle between vectors (2, 3, 4) and (0, 0, 0) is "+angle2+" radians");
-		//This second angle does not return a number because the modulus of the vector (0, 0, 0) is zero.
-		//This results in everything being multiplied by 0 hence nothig is returned. 
+		System.out.println("This second angle does not return a number because the modulus of the vector (0, 0, 0) is zero.");
+		System.out.println("This results in everything being multiplied by 0 hence nothig is returned."); 
 	}	
 }
 

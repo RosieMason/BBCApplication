@@ -2,32 +2,32 @@ package module1;
 
 public class AlgorithmControl {
 	
-	//print integers between a and b in steps of 1
-	public void loop(int a, int b) {
+	//print integers between 1 and 10 in steps of 1
+	public void loop() {
 		int i;
-		int imax = b;
-		for (i = a; i <= imax ; i++) {
+		int imax = 10;
+		for (i = 1; i <= imax ; i++) {
 			System.out.println(i);
 		}
 	}
 	
-	//print integers between a and b in steps of -1
-	public void decrement(int a, int b) {
+	//print integers between 5 and -12 in steps of -1
+	public void decrement() {
 		 boolean y; //while loop requires a boolean
-		 float x = a;
+		 float x = 6;
 		 y = true;
 		 //runs while y statement is true
 		 while (y) {
 			 x--;
-			 y = x>b ;
+			 y = x>-12 ;
 			 System.out.print(x);
 		 }
 	}
 	
-	//print integers between a and b in steps of c
-	public void increment(double a, double b, double c) {
+	//print integers between 2.4 and 8.8 in steps of 0.2
+	public void increment() {
 		double i;
-		for (i = a ; i <= b ;  i = i + c)  {
+		for (i = 2.4 ; i <= 8.8 ;  i = i + 0.2)  {
 			System.out.println(i);
 		}
 		
@@ -58,17 +58,15 @@ public class AlgorithmControl {
 	public static void main(String[] args) {
 		AlgorithmControl ac = new AlgorithmControl();
 		
-		ac.loop(1, 10);//integers 1 to 10
-		ac.increment(2.4, 8.8 , 0.20); //numbers 2.4 to 8.8 in steps of 0.2
-		ac.decrement(2,  -12);//integers 2 to -12
 		
 		//total loops for 8 seconds in steps of 40000
 		int totalloop1 = ac.timer(8000, 40000);
 		//total loops for 8 seconds in steps of 1000
 		int totalloop2 = ac.timer(8000, 1000);
 		
-		System.out.println("the total number of loops for steps of 40 000 and 1000 9s "+ totalloop1 + " and " + totalloop2 +"respectively" );
-		
+		System.out.println("The total number of loops for steps of 40 000 and 1000 is "+ totalloop1 + " and " + totalloop2 +" respectively." );
+		System.out.println("The value of the 40 000 steps is greater, this is because it needs to print the number of steps much less regularly than for 100 steps.");
+		System.out.println("Having less steps to print allows it to spend more of the 8 seconds completing loops.");
 
 	}
 
