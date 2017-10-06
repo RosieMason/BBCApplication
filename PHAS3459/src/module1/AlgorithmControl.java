@@ -30,15 +30,34 @@ public class AlgorithmControl {
 		
 	}
 	
-	//public void timer() {
+	public void timer(double a) {
+		long timeNow = System.currentTimeMillis();
+		boolean y;
+		boolean x;
+		x = true;
+		y=true;
+		while(x&&y) {
+			long time = System.currentTimeMillis();
+			if (x=time % timeNow != 10000) {
+				a++;
+			}
+			else {
+				System.out.println(time);
+				a++;
+			}
+			
+			
+			
+		}
+	}
 
 	public static void main(String[] args) {
 		AlgorithmControl ac = new AlgorithmControl();
 		
-		ac.loop(1, 10);
-		ac.increment(2.4, 8.8 , 0.20);
-		ac.decrement(2,  -12);
-		
+		//ac.loop(1, 10);
+		//ac.increment(2.4, 8.8 , 0.20);
+		//ac.decrement(2,  -12);
+		ac.timer(1);
 		
 
 	}
