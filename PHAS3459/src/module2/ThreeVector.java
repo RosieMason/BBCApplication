@@ -31,12 +31,20 @@ public class ThreeVector {
 		
 	}
 	
-	//public static double scalarProduct() {
-		
-		//scalar = 
-		
-	//}
+	public static double scalarProduct(ThreeVector a, ThreeVector b) {
+		double scalar =  a.x * b.x + a.y * b.y + a.z * b.z;
+		return scalar;		
+	}
 	
+	public static ThreeVector vectorProduct(ThreeVector a, ThreeVector b) {
+		ThreeVector v = new ThreeVector(a.y*b.z - a.z*b.y, a.z*b.x - a.x*b.z, a.x*b.y - a.y*b.x);
+		return v;
+	}
+	
+	public static ThreeVector add(ThreeVector a, ThreeVector b) {
+		ThreeVector ad = new ThreeVector(a.x+b.x, a.y+b.y, a.z+b.z);
+		return ad;
+	}
 	
 
 		
@@ -48,7 +56,8 @@ public class ThreeVector {
 
 	public static void main(String[] args) {
 		ThreeVector vec1 = new ThreeVector(1, 2, 3);
-		System.out.println(vec1.magnitude());
+		ThreeVector vec2 = new ThreeVector (2, 3, 4);
+		System.out.println(scalarProduct(vec1, vec2));
 
 
 	}
