@@ -72,9 +72,9 @@ public class Complex {
 		return c;
 	}
 	
-	private static double I = Math.sqrt(-1);
-	private static double ONE = 1;
-	private static double ZERO = 0;
+	public static final Complex I = new Complex(0, Math.sqrt(-1));
+	public static final Complex ONE = new Complex(1, 0);
+	public static final Complex ZERO = new Complex(0, 0);
 
 	public static void main(String[] args) {
 	}
