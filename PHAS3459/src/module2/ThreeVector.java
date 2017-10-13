@@ -10,12 +10,6 @@ public class ThreeVector {
 		x = a; y=b; z=c;
 	}
 	
-	//public void setVector(double a, double b, double c) {
-	//	x = a;
-	//y = b;
-	//	z = c;	
-	//}
-	
 	public double magnitude() {
 		double m = Math.sqrt(x*x + y*y + z*z);
 		return m;
@@ -46,20 +40,28 @@ public class ThreeVector {
 		return ad;
 	}
 	
-
-		
-
-	//public ThreeVector(double a, double b, double c) {x = a; y = b; z = c;}
+	public static double angle(ThreeVector a, ThreeVector b) {
+		double ang = Math.acos(scalarProduct(a, b) / (a.magnitude() * b.magnitude()));
+		return ang;
+	}
 	
+	public double scalarProduct(ThreeVector a) {
+		return scalarProduct(this, a);
+	}
 	
+	public ThreeVector vectorProduct(ThreeVector a) {
+		return vectorProduct(this, a);
+	}
 	
-
+	public ThreeVector add(ThreeVector a) {
+		return add(this, a);
+	}
+	
+	public double angle(ThreeVector a) {
+		return angle(this, a);
+	}
+	
 	public static void main(String[] args) {
-		ThreeVector vec1 = new ThreeVector(1, 2, 3);
-		ThreeVector vec2 = new ThreeVector (2, 3, 4);
-		System.out.println(scalarProduct(vec1, vec2));
-
-
 	}
 
 }
