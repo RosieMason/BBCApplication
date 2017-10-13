@@ -4,10 +4,13 @@ public class FallingParticle {
 	static double m; 
 	static double d;
 	double t = 0;
-	double z;
 	static double h;
 	double v;
-	final double g = 9.8;
+	final double g = 9.8; 
+	double z = h - v * t;
+	
+
+	
 	
 	public FallingParticle () {}
 	public FallingParticle(double a, double b) {
@@ -16,7 +19,7 @@ public class FallingParticle {
 	}
 	
 	void setH(double val) {h = val;}
-	double getH() {return h;}
+	double getZ() {return z;}
 	void setV(double val) {v = val;}
 	double getV() {return v;}
 	double getT() {return t;}
@@ -32,6 +35,7 @@ public class FallingParticle {
 		while (x) {
 			doTimeStep(deltaT);
 			x= z > 0 ;
+			t = t +deltaT;
 		}
 			
 	}
