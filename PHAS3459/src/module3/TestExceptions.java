@@ -10,7 +10,7 @@ public class TestExceptions {
 			 System.out.println(c);
 		}
 		catch (Exception e) {
-			System.out.println(e);
+		System.out.println(e);
 		}
 		try {
 			 Complex c = Complex.divide(c2, c1);
@@ -19,6 +19,26 @@ public class TestExceptions {
 		catch (Exception e) {
 			System.out.println(e);
 		}
+		
+		ThreeVector v1 = new ThreeVector(0, 0, 0);
+		ThreeVector v2 = new ThreeVector(2, 4, 1);
+		try {
+			ThreeVector t = v1.unitVector();
+			System.out.println(t);
+		}
+		catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		try {
+			double a = v2.angle(v1);
+			System.out.println(a);
+		}
+		catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		
 	}
 
 }
