@@ -2,12 +2,12 @@ package module3;
 
 public class FallingParticle {
 	//establish the components of the falling particle
-	static double m; //mass 
-	static double d; //drag coefficient
+	double m; //mass 
+	double d; //drag coefficient
 	double t = 0; //time
 	double h = 1; //initial height (set to one unless otherwise specified)
 	double v = 0; //velocity (measured upward)
-	final double g = -9.8; //gravity
+	static final double g = 9.8; //gravity
 	double z; //vertical height (measured upward)
 	
 	public FallingParticle () {}
@@ -28,11 +28,24 @@ public class FallingParticle {
 		if (val < 0) {
 			throw new Exception("h cannot be less than zero.");
 		}
-		h = val;}
-	double getZ() {return z;}
-	void setV(double val) {v = val;}
-	double getV() {return v;}
-	double getT() {return t;}
+		h = val;
+	}
+	
+	double getZ() {
+		return z;
+		}
+	
+	void setV(double val) {
+		v = val;
+		}
+	
+	double getV() {
+		return v;
+		}
+	
+	double getT() {
+		return t;
+		}
 	
 	//set the timesteps and calculate new values for acceleration, v, and z
 	public double  doTimeStep(double deltaT) throws Exception {
@@ -42,20 +55,23 @@ public class FallingParticle {
 		//calculate the acceleration
 		double a = (d * v * v / m) - g ;
 		//recalculate the new v and z
-		v = v - a * deltaT;
+		v = v + a * deltaT;
 		z = z + v * deltaT;
+		t = t + deltaT;
 		return z;
 	}
 	
 	//simulate the drop of a particle 
 	public double  drop(double deltaT) throws Exception {
+		this.z = this.h;
+//		if (z<0) {
+//			throw new Exception ("z cannot be less than zero.");
+//		}
 		boolean x = true;
 		//while z > 0 continue the drop
 		while (x) {
 			doTimeStep(deltaT);
 			x= z > 0 ;
-			//caluclate the new t
-			t = t + deltaT;
 		}
 		return t;
 			
