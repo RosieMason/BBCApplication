@@ -1,14 +1,10 @@
 package module3;
 
 import java.util.Random;
-import java.lang.Character;
-import java.lang.Integer;
-import java.lang.StringBuilder;
-import java.lang.Math;
 
 public class Alphabet {
 	
-	public static char randomCharacter() {
+	public static char randomCharacter(){
 		Random n = new Random();
 		int i = n.nextInt(127)+0;
 		char c =(char) i;
@@ -16,7 +12,7 @@ public class Alphabet {
 	}
 	
 
-	public static void main(String[] args) throws Exception {
+	public static void main(String[] args) {
 		int i;
 		StringBuilder s = new StringBuilder();
 		int total = 0;
@@ -25,20 +21,20 @@ public class Alphabet {
 			char c = randomCharacter();
 			if (Character.isLetter(c) || Character.isDigit(c)) {
 				s.append(c);
-				if (Character.isLetter(c)) {
-					throw new Exception ("c is a Letter so cannot convert to interger");
-				}
 				try{
 					total = total + Integer.parseInt(Character.toString(c));
 				}
 				catch (Exception e) {
 					exceptions++;
+					
 				}
 			}
-			else {
-			}
+
 		}
-		System.out.println("The total is " + total);
+		System.out.println("The StringBuilder array of Letter and digits is:");
+		System.out.println( s);
+		System.out.println("the length of this is " +s.length());
+		System.out.println("The sum of all the numbers  is " + total + ", the total number of exceptions is "+exceptions);
 	}
 	
 }
