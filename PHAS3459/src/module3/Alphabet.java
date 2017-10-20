@@ -16,12 +16,30 @@ public class Alphabet {
 	}
 	
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		int i;
-		for (i = 1; i<=250; i++) {
+		StringBuilder s = new StringBuilder();
+		int total = 0;
+		int exceptions = 0;
+		for (i = 0; i<250; i++) {
 			char c = randomCharacter();
-			System.out.println(c);
+			if (Character.isLetter(c) || Character.isDigit(c)) {
+				s.append(c);
+				if (Character.isLetter(c)) {
+					throw new Exception ("c is a Letter so cannot convert to interger");
+				}
+				try{
+					total = total + Integer.parseInt(Character.toString(c));
+				}
+				catch (Exception e) {
+					exceptions++;
+				}
+			}
+			else {
+			}
 		}
+		System.out.println("The total is " + total);
 	}
-
+	
 }
+		
