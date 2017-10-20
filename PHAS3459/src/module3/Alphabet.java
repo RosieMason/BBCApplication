@@ -10,15 +10,18 @@ public class Alphabet {
 	
 	public static char randomCharacter() {
 		Random n = new Random();
-		int i = n.nextInt();
+		int i = n.nextInt(127)+0;
 		char c =(char) i;
 		return c;
 	}
 	
 
 	public static void main(String[] args) {
-		Random a = new Random();
-		System.out.println(randomCharacter());
+		int i;
+		for (i = 1; i<=250; i++) {
+			char c = randomCharacter();
+			System.out.println(c);
+		}
 	}
 
 }
