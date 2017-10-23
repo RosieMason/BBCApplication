@@ -6,48 +6,46 @@ public class Complex {
 	double x; double y;
 	
 	public Complex() {}
-	//defing the components of an imaginary number
+	//seperating the components of an imaginary number
 	public Complex(double a, double b) {
 		x = a; y = b;
 	}
 	
-	//take the real part 
+	//return the real part 
 	public double real() {
 		return x;
 	}
 	
-	//take the imaginary part
+	//return the imaginary part
 	public double imag() {
 		return y;
 	}
 	
-	//caluclate the modulus
+	//caluclate the modulus: |x+iy| = x^2 + y^2
 	public double modulus() {
-		//|x+iy| = x^2 + y^2
 		double mod = Math.sqrt(x*x + y*y);
 		return mod;
 	}
 	
-	//caluclate the angle on a Argand diagram 
+	//caluclate the angle on a Argand diagram : tan(theta) = y/x
 	public double angle() {
-		//tan(theta) = y/x
 		double ang = Math.atan(y / x);
 		return ang;
 	}
 	
-	//calculate the complex conjugate of a complex number
+	//calculate the complex conjugate of a complex number : x+iy = x-iy
 	public Complex conjugate() {
-		//x+iy = x-iy
 		Complex c = new Complex(x, -y);
 		return c;
 	}
 	
-	//normalise a complex number
+	//normalise a complex number : |x + iy| = 1
+	//throw an exception if the number is zero.
 	public Complex normalised() throws Exception{
-		if (x == 0 && y == 0) {
-			throw new Exception("Cannot divide by zero");
+		//use equals function to throw zero exception
+		if (this.equals(ZERO)) {
+			throw new Exception("Cannot normalise a zero complex number");
 		}
-		// |x + iy| = 1
 		Complex m = new Complex(x / modulus(), y / modulus());
 		return m;
 	}
@@ -67,41 +65,38 @@ public class Complex {
 	}
 	
 	//calculate a complex number from the magnitude and angle
+	//x = |x + iy| Cos(theta)
+	//y = |x + iy| sin(theta)
 	public static Complex setFromModulusAngle(double mag, double ang) {
-		//x = |x + iy| Cos(theta)
-		//y = |x + iy| sin(theta)
 		Complex c = new Complex(mag * Math.cos(ang), mag*Math.sin(ang));
 		return c;
 	}
 	
-	//add two complex numbers together
+	//add two complex numbers together : (x+iy)+(a+ib) = (x+a + i(y+b))
 	public static Complex add(Complex a , Complex b) {
-		//(x+iy)+(a+ib) = (x+a + i(y+b))
 		Complex c = new Complex(a.x + b.x, a.y + b.y);
 		return c;
 	}
 	
-	//subtract two complex numbers
+	//subtract two complex numbers : (x+iy)-(a+ib) = (x-a + i(y-b))
 	public static Complex subtract(Complex a, Complex b) {
-		
-	//(x+iy)-(a+ib) = (x-a + i(y-b))
 		Complex c = new Complex(a.x - b.x , a.y - b.y);
 		return c;
 	}
 	
-	//multiply two complex numbers 
+	//multiply two complex numbers : (x+iy)(a+ib) = (xa - yb + i(ab + ya))
 	public static Complex multiply(Complex a, Complex b) {
-		//(x+iy)(a+ib) = (xa - yb + i(ab + ya))
 		Complex c = new Complex(a.x * b.x - a.y*b.y, a.x * b.y + a.y*b.x);
 		return c;
 	}
 	
-	//divide two complex numbers
+	//divide two complex numbers : (x+iy)/(a+ib) = (xa+yb + i(ya - xb)) / (a^2 + b^2)
+	//throw an exception if either of the numbers is zero
 	public static Complex divide(Complex a, Complex b) throws Exception {
-		if (b.equals(ZERO) == true) {
-			throw new Exception("Cannot divide by zero");
+		//use equals function to throw zero exception
+		if (b.equals(ZERO) == true|| a.equals(ZERO)) {
+			throw new Exception("Cannot divide a zero complex number");
 		}
-		//(x+iy)/(a+ib) = (xa+yb + i(ya - xb)) / (a^2 + b^2)
 		Complex c = new Complex((a.x*b.x + a.y*b.y) / (b.x*b.x + b.y*b.y), (a.y*b.x - a.x*b.y)/(b.x*b.x + b.y*b.y));
 		return c;
 	}
