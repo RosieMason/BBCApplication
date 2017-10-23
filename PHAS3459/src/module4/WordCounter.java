@@ -11,7 +11,6 @@ public class WordCounter {
 		InputStream is = u.openStream();
 		InputStreamReader isr = new InputStreamReader(is);
 		BufferedReader b = new BufferedReader(isr);
-		is.close();
 		return b;
 	}
 	
@@ -30,8 +29,8 @@ public class WordCounter {
 				s.next();
 				sum++;
 			}
-		s.close();
-		return sum;
+			s.close();
+			return sum;
 		}
 	}
 
