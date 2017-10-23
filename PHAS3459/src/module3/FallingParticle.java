@@ -11,50 +11,61 @@ public class FallingParticle {
 	double z; //vertical height (measured upward)
 	
 	public FallingParticle () {}
+	
 	//define the mass and drag factor
+	//throws an exception if mass isn't positive and drag is negative. 
 	public FallingParticle(double a, double b) throws Exception{
-		if (a < 0) {
-			throw new Exception("m cannot be less than zero");
+		//throw exception if mass is not positive
+		if (a <= 0) {
+			throw new Exception("mass must be positive");
 		}
+		//throw exception if drag is negative
 		if(b < 0) {
-			throw new Exception("d cannot be less than zero");
+			throw new Exception("drag cannot be less than zero");
 		}
 		m = a;
 		d = b; 
 	}
 	
-	//allow h and v to be 'set' and z, v and t to be 'got'
+	//set h - throws exception if h is negative
 	void setH(double val) throws Exception{
+		//throw exception for h < 0
 		if (val < 0) {
-			throw new Exception("h cannot be less than zero.");
+			throw new Exception("initial height cannot be negative.");
 		}
 		h = val;
 	}
 	
+	//method to 'get' the z value 
 	double getZ() {
 		return z;
 		}
 	
+	//method to 'set' the v value 
 	void setV(double val) {
 		v = val;
 		}
 	
+	//method to 'get' the v value 
 	double getV() {
 		return v;
 		}
 	
+	//method to 'get' the t value 
 	double getT() {
 		return t;
 		}
 	
-	//set the timesteps and calculate new values for acceleration, v, and z
+	//set the timesteps and calculate new values for acceleration, v, z and  t
+	//throws exception if the timestep is not positive
 	public double  doTimeStep(double deltaT) throws Exception {
+		//throw exception if timestep is not positive
 		if (deltaT <= 0) {
-			throw new Exception("the time step must be bigger than zero");
+			throw new Exception("the time step must be positive");
 		}
 		//calculate the acceleration
 		double a = (d * v * v / m) - g ;
-		//recalculate the new v and z
+		//recalculate the new v, z and t
 		v = v + a * deltaT;
 		z = z + v * deltaT;
 		t = t + deltaT;
@@ -62,11 +73,9 @@ public class FallingParticle {
 	}
 	
 	//simulate the drop of a particle 
+	//throws exception if the timestep is not positive - this is called on in soTimeStep Method
 	public double  drop(double deltaT) throws Exception {
 		this.z = this.h;
-		if (z<0) {
-			throw new Exception ("z cannot be less than zero.");
-		}
 		boolean x = true;
 		//while z > 0 continue the drop
 		while (x) {
