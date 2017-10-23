@@ -6,11 +6,12 @@ import java.util.Scanner;
 
 public class WordCounter {
 	
-	public static BufferedReader brfromURL (String urlName) throws IOException {
+	public static BufferedReader brFromURL (String urlName) throws IOException {
 		URL u = new URL(urlName);
 		InputStream is = u.openStream();
 		InputStreamReader isr = new InputStreamReader(is);
 		BufferedReader b = new BufferedReader(isr);
+		is.close();
 		return b;
 	}
 	
@@ -20,17 +21,30 @@ public class WordCounter {
 		return b;
 	}
 	
-	public static int countWordsInResource(BufferedReader dataAsBR) {
-		Scanner s = new Scanner(dataAsBR);
-		int sum = 0 ;
-		while (s.hasNext()) {;
-			sum++;
-		}
+	public static int countWordsInResource(BufferedReader dataAsBR) throws IOException{
+		try (
+			Scanner s = new Scanner(dataAsBR) ;
+		){
+			int sum = 0 ;
+			while (s.hasNext()){
+				s.next();
+				sum++;
+			}
 		s.close();
 		return sum;
+		}
 	}
 
 	public static void main(String[] args) {
+		try {
+			BufferedReader b = brFromURL("http://www.hep.ucl.ac.uk/undergrad/3459/data/module4/module4_text.txt");
+			int words = countWordsInResource(b);
+			System.out.println("The total number of words is "+words);
+		}
+		catch(IOException e) {
+		}
+		
+		
 
 	}
 
