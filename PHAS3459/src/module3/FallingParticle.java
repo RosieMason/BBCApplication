@@ -64,9 +64,9 @@ public class FallingParticle {
 	//simulate the drop of a particle 
 	public double  drop(double deltaT) throws Exception {
 		this.z = this.h;
-//		if (z<0) {
-//			throw new Exception ("z cannot be less than zero.");
-//		}
+		if (z<0) {
+			throw new Exception ("z cannot be less than zero.");
+		}
 		boolean x = true;
 		//while z > 0 continue the drop
 		while (x) {
