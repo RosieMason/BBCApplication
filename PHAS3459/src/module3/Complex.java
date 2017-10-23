@@ -72,7 +72,7 @@ public class Complex {
 		return c;
 	}
 	
-	//add two complex numbers together : (x+iy)+(a+ib) = (x+a + i(y+b))
+	//add two complex numbers together: (x+iy)+(a+ib) = (x+a + i(y+b))
 	public static Complex add(Complex a , Complex b) {
 		Complex c = new Complex(a.x + b.x, a.y + b.y);
 		return c;
