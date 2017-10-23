@@ -3,6 +3,7 @@ package module4;
 import java.io.*;
 import java.net.*;
 
+
 public class NumericalReader {
 	
 	public NumericalReader() {
@@ -21,6 +22,19 @@ public class NumericalReader {
 		 catch (IOException e) {
 		 }
 		return typed;
+	}
+	
+	public BufferedReader brFromURL(String urlName) throws IOException {
+		URL u = new URL(urlName);
+		InputStream is = u.openStream();
+		InputStreamReader isr = new InputStreamReader(is);
+		BufferedReader b = new BufferedReader(isr);
+		return b;
+	}
+	
+	void analysisStart(String dataFile) throws IOException{
+		FileWriter fw = new FileWriter(dataFile);
+		
 	}
 
 	public static void main(String[] args) {
