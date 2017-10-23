@@ -20,17 +20,15 @@ public class WordCounter {
 		return b;
 	}
 	
-//	public static int countWordsInResource(BufferedReader dataAsBR) {
-//		Scanner s = new Scanner(dataAsBR);
-//		double sum = 0 ;
-//		while (s.hasNext()) {
-//			String token = s.next();
-//			if(Char.parseChar(token)){
-//				
-//			}
-//		}
-//		
-//	}
+	public static int countWordsInResource(BufferedReader dataAsBR) {
+		Scanner s = new Scanner(dataAsBR);
+		int sum = 0 ;
+		while (s.hasNext()) {;
+			sum++;
+		}
+		s.close();
+		return sum;
+	}
 
 	public static void main(String[] args) {
 
