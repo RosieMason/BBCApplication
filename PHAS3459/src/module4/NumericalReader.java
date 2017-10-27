@@ -2,6 +2,7 @@ package module4;
 
 import java.io.*;
 import java.net.*;
+import java.util.Scanner;
 
 
 public class NumericalReader {
@@ -33,7 +34,15 @@ public class NumericalReader {
 	}
 	
 	void analysisStart(String dataFile) throws IOException{
-		FileWriter fw = new FileWriter(dataFile);
+		double minValue;
+		double maxValue;
+		double nValues;
+		double sunOfValues;
+		File datafile= new File(dataFile);
+		}
+	
+	void analyseData(String line) {
+		Scanner s = new Scanner(line);
 		
 	}
 
