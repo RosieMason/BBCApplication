@@ -10,6 +10,11 @@ public class NumericalReader {
 	public NumericalReader() {
 	}
 	
+	double minValue;
+	double maxValue;
+	double nValues;
+	double sumOfValues;
+	
 	public static String getStringFromKeyboard() {
 		InputStreamReader r = new InputStreamReader(System.in);
 		BufferedReader b = new BufferedReader(r);
@@ -37,14 +42,40 @@ public class NumericalReader {
 		double minValue;
 		double maxValue;
 		double nValues;
-		double sunOfValues;
-		File datafile= new File(dataFile);
+		double sumOfValues;
+		File outputfile = new File(dataFile);
 		}
 	
-	void analyseData(String line) {
+	void analyseData(String line) throws IOException {
 		Scanner s = new Scanner(line);
-		
-	}
+		File outputfile = new File(line);
+		while(s.hasNext()) {
+			line = s.nextLine();
+			if (line.startsWith("[^\\d.]")) {
+				s.nextLine();
+			}
+			else {
+				try(
+						FileWriter fw = new FileWriter(outputfile);
+						PrintWriter pw = new PrintWriter(fw);){
+					double a = s.nextDouble(); 
+					if(a < minValue) {
+						minValue = a;
+					}
+					else if (a > maxValue) {
+						maxValue = a;
+					}
+					
+					nValues++;
+					sumOfValues = sumOfValues + a;
+					
+					
+					}
+				}
+			}
+
+			
+		}
 
 	public static void main(String[] args) {
 
