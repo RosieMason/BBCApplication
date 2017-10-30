@@ -10,8 +10,8 @@ public class NumericalReader {
 	public NumericalReader() {
 	}
 	//initialise variables
-	Double minValue = null;
-	Double maxValue = null;
+	Double minValue;
+	Double maxValue;
 	Double nValues = 0.;
 	Double sumOfValues = 0.;
 	File outputfile;
