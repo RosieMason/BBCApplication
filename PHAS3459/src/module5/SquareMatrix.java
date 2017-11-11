@@ -1,124 +1,149 @@
 package module5;
 
-import java.util.Arrays;
+//import java.util.Arrays;
 
 public class SquareMatrix {
 	
-	//int[][] matrix;
-//	
-//	public SquareMatrix( int a, int b) {
-//		matrix = new int[a][b];
-//	}
-//	
-//	public static int[][] addMatrix(int[][] a, int[][] b) {
-//		int[][] c = new int[a.length][a[0].length];
-//		int i = 0;
-//		int j = 0;
-//		for(i = 0 ; i < a.length ; i++) {
-//			for(j = 0 ; j < a[i].length ; j++) {
-//				c[i][j] = a[i][j] + b[i][j];
-//			}
+	double[][] matrix;
+	static int i = 0;
+	static int j = 0;
+	
+	public SquareMatrix() {}
+	
+	public SquareMatrix(int a, int b) {//throws Exception {
+//		if(a != b) {
+//			throw new Exception("The matrix is not a Square Matrix");
 //		}
-//		return c;
-//	}
-	
-	
+		matrix = new double[a][b];
+	}
 
-	public static void main(String[] args) {
-		int[][] A = {{1, 2, 0}, {0, 2, 0}, {-2, 0, 1}};
-		int[][] B = {{2, 1, 0}, {0, 1, 0}, {-1, 0, 1}};
-		int[][] C = {{4, 3}, {3, 2}};
-		int[][] D = {{-2, 3}, {3, -4}};
-		
-		
-		int[][] ADD = new int[3][3];
+	
+	public String toString() {
 		int i = 0;
 		int j = 0;
-		for(i = 0 ; i < A.length ; i++) {
-			for(j = 0 ; j < A[i].length ; j++) {
-				ADD[i][j] = A[i][j] + B[i][j];
-			}
-		}
-		System.out.println("The value of A+B is:");
-		for (i = 0; i < ADD.length; i++) {
-		    for (j = 0; j < ADD[i].length; j++) {
-		        System.out.print(ADD[i][j] + " ");
+		String str="";
+		for (i = 0; i < matrix.length; i++) {
+		    for (j = 0; j < matrix[i].length; j++) {
+		        str += " " + matrix[i][j] + " ";
 		    }
-		    System.out.println();
-		
-		}	
-		
-		
-		int[][] MINUS = new int[3][3];
-		for(i = 0 ; i < A.length ; i++) {
-			for(j = 0 ; j < A[i].length ; j++) {
-				MINUS[i][j] = A[i][j] - B[i][j];
-			}
+		    str += "\r\n";
 		}
-		
-		
-		System.out.println("The value of A-B is:");
-		for (i = 0; i < MINUS.length; i++) {
-		    for (j = 0; j < MINUS[i].length; j++) {
-		        System.out.print(MINUS[i][j] + " ");
-		    }
-		    System.out.println();
-		}
-		
-		
-		int[][] AB = new int[3][3];
-		int[][] BA = new int[3][3];
-		int[][] COMMUTATOR = new int[3][3];
-		for(i = 0; i<A.length ; i++) {
-			for(j = 0 ; j <  A[i].length ; j++) {
-				int x = 0;
-				int a = A[i][x] * B[x][j];
-				int b = A[i][x + 1] * B[x + 1][j];
-				int c = A[i][x + 2] * B[x + 2][j];
-				AB[i][j] = a + b + c;
-			}
-		}
-		for(i = 0; i<A.length ; i++) {
-			for(j = 0 ; j <  A[i].length ; j++) {
-				int x = 0;
-				int a = B[i][x] * A[x][j];
-				int b = B[i][x + 1] * A[x + 1][j];
-				int c = B[i][x + 2] * A[x + 2][j];
-				BA[i][j] = a + b + c;
-			}
-		}
-		for(i = 0 ; i < AB.length ; i++) {
-			for(j = 0 ; j < AB[i].length ; j++) {
-				COMMUTATOR[i][j] = AB[i][j] - BA[i][j];
-			}
-		}
-		System.out.println("The value of the commutator [A, B] is:");
-		for (i = 0; i < COMMUTATOR.length; i++) {
-		    for (j = 0; j < COMMUTATOR[i].length; j++) {
-		        System.out.print(COMMUTATOR[i][j] + " ");
-		    }
-		    System.out.println();
-		}
-		
-		
-		int[][] CD = new int[2][2];
-		for(i = 0; i<C.length ; i++) {
-			for(j = 0 ; j <  C[i].length ; j++) {
-				int x = 0;
-				int a = C[i][x] * D[x][j];
-				int b = C[i][x + 1] * D[x + 1][j];
-				CD[i][j] = a + b;
-			}
-		}
-		System.out.println("The value of CD is:");
-		for (i = 0; i < CD.length; i++) {
-		    for (j = 0; j < CD[i].length; j++) {
-		        System.out.print(CD[i][j] + " ");
-		    }
-		    System.out.println();
-		}
-		
-		int[][] I = {{1, 0}, {0, 1}};
-		
+		return str;
 	}
+	
+	public static SquareMatrix unitMatrix(int size) throws Exception {
+		SquareMatrix unit = new SquareMatrix(size, size);
+		for (i = 0; i < unit.matrix.length; i++) {
+		    for (j = 0; j < unit.matrix[i].length; j++) {
+		    	if (j==i) {
+		    		unit.matrix[i][j] = 1;
+		    	}
+		    	else {
+		    		unit.matrix[i][j] = 0;
+		    	}
+		    }
+		}
+		return unit;
+	}
+	
+	
+	public boolean equals(Object obj) {
+		boolean x = true;
+		SquareMatrix other = (SquareMatrix) obj;
+		while(x= true) {
+			for (i = 0; i < other.matrix.length; i++) {
+				for (j = 0; j < other.matrix[i].length; j++) {
+					if(this.matrix[i][j] == other.matrix[i][j]) {
+						x = true;
+					}
+					else {
+						x = false;
+					}
+				}
+			}
+			break;
+		}
+		return x;
+	}
+		
+	 
+	
+	public static SquareMatrix addMatrix(SquareMatrix sm1, SquareMatrix sm2) throws Exception{
+		if(sm1.matrix.length != sm2.matrix.length || sm1.matrix[1].length != sm2.matrix[1].length) {
+			throw new Exception("sm1 and sm2 are not the same size.");
+		}
+		SquareMatrix add = new SquareMatrix(sm1.matrix.length, sm2.matrix.length );
+		for(i=0; i<sm1.matrix.length ; i++) {
+			for(j = 0 ; j < sm1.matrix[i].length ; j++) {
+				add.matrix[i][j] = sm1.matrix[i][j] + sm2.matrix[i][j];
+			}
+		}
+		return add;
+	}
+	
+	public static SquareMatrix subtract(SquareMatrix sm1, SquareMatrix sm2) throws Exception{
+		if(sm1.matrix.length != sm2.matrix.length || sm1.matrix[1].length != sm2.matrix[1].length) {
+			throw new Exception("sm1 and sm2 are not the same size.");
+		}
+		SquareMatrix minus = new SquareMatrix(sm1.matrix.length, sm2.matrix.length );
+		for(i = 0 ; i < sm1.matrix.length ; i++) {
+			for(j = 0 ; j < sm1.matrix[i].length ; j++) {
+				minus.matrix[i][j] = sm1.matrix[i][j] - sm2.matrix[i][j];
+			}
+		}
+		return minus;
+	}
+	
+	public static SquareMatrix multiply(SquareMatrix sm1, SquareMatrix sm2) throws Exception{
+		if(sm1.matrix.length != sm2.matrix.length || sm1.matrix[1].length != sm2.matrix[1].length) {
+			throw new Exception("sm1 and sm2 are not the same size.");
+		}
+		SquareMatrix multiply = new SquareMatrix(sm1.matrix.length, sm2.matrix.length );
+		int x = 0;
+		for(i = 0; i<sm1.matrix.length ; i++) {
+			for(j = 0 ; j <  sm1.matrix[i].length ; j++) {
+				for ( x= 0 ; x < sm1.matrix.length ; x++) {
+					double a = sm1.matrix[i][x] * sm2.matrix[x][j];
+					multiply.matrix[i][j] = (int) (multiply.matrix[i][j] + a);
+				}
+			}
+		}
+		return multiply;
+	}
+	
+	public SquareMatrix addMatrix(SquareMatrix sm1) {
+		SquareMatrix add = new SquareMatrix() ;
+		try {
+			add = addMatrix(sm1, this);
+		}
+		catch (Exception e) {
+			System.out.println(e);
+		}
+		return add;
+	}
+	
+	public SquareMatrix subrtact(SquareMatrix sm1) {
+		SquareMatrix minus = new SquareMatrix() ;
+		try {
+			minus = subtract(this, sm1);
+		}
+		catch (Exception e) {
+			System.out.println(e);
+		}
+		return minus;
+	}
+	
+	public SquareMatrix multiply(SquareMatrix sm1) {
+		SquareMatrix product = new SquareMatrix() ;
+		try {
+			product = multiply(this, sm1);
+		}
+		catch (Exception e) {
+			System.out.println(e);
+		}
+		return product;
+	}
+	
+
 }
+
