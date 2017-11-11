@@ -34,6 +34,11 @@ public class DataPoint {
 		}
 	}
 	
+	ArrayList  getX() {
+		return x;
+	}
+	
+	
 	public static ArrayList setY(BufferedReader dataAsBR) throws IOException{
 		try (
 			Scanner s = new Scanner(dataAsBR);
@@ -46,6 +51,11 @@ public class DataPoint {
 			return y;
 		}
 	}
+	
+	ArrayList  getY() {
+		return y;
+	}
+	
 	
 	public static ArrayList setEY(BufferedReader dataAsBR) throws IOException{
 		try (
@@ -60,6 +70,11 @@ public class DataPoint {
 			return ey;
 		}
 	}
+	
+	ArrayList  getEY() {
+		return ey;
+	}
+	
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
