@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.*;
 
@@ -64,6 +63,33 @@ public class Minerals {
 		}
 		System.out.println(Mass);
 		System.out.println(Origin);
+		
+		 double maxMass = Collections.max(Mass.values());
+		 String max = Double.toString(maxMass);
+		 int mineralmax = 0;
+		 for (Map.Entry<Integer,Double> e : Mass.entrySet()) {
+			 Integer key = e.getKey();
+			 Object value = e.getValue();
+			 if ((value.toString()).equals(max)) {
+			 mineralmax = key;
+			 }
+		 }
+		 String origin = Origin.get(mineralmax);
+		 System.out.println("The mineral with the largest mass is "+mineralmax+" with mass "+maxMass+", it is found in "+origin);
+		 
+		 double minMass = Collections.min(Mass.values());
+		 String min = Double.toString(minMass);
+		 int mineralmin = 0;
+		 for (Map.Entry<Integer,Double> e : Mass.entrySet()) {
+			 Integer key = e.getKey();
+			 Object value = e.getValue();
+			 if ((value.toString()).equals(min)) {
+			 mineralmin = key;
+			 }
+		 }
+		 String originmin = Origin.get(mineralmin);
+		 System.out.println("The mineral with the smallest mass is "+mineralmin+" with mass "+minMass+", it is found in "+originmin);
+
 
 	}
 
