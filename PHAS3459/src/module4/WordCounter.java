@@ -41,7 +41,7 @@ public class WordCounter {
 	public static void main(String[] args) {
 		//test out word counter
 		try {
-			BufferedReader b = brFromURL("http://www.hep.ucl.ac.uk/undergrad/3459/data/module4/module4_text.txt");
+			BufferedReader b = brFromURL("http://www.hep.ucl.ac.uk/undergrad/3459/data/module5/module5-xy.txt");
 			int words = countWordsInResource(b);
 			System.out.println("The total number of words is "+words);
 		}
