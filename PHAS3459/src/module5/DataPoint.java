@@ -4,13 +4,15 @@ import java.util.*;
 
 public class DataPoint {
 	
-	static ArrayList x = new ArrayList();
-	static ArrayList y = new ArrayList<Double>();
-	static ArrayList ey = new ArrayList();
+	//initialize variables
+	static ArrayList<Double> x = new ArrayList<Double>();
+	static ArrayList<Double> y = new ArrayList<Double>();
+	static ArrayList<Double> ey = new ArrayList<Double>();
 	
-	
-	public static ArrayList setX(ArrayList data) {
+	//create an x array
+	public static ArrayList<Double> setX(ArrayList<Double> data) {
 		int i = 0;
+		//take every 3rd element of the sort starting at 0
 		while (i < data.size()){
 				x.add(data.get(i));
 				i = i + 3;
@@ -18,13 +20,15 @@ public class DataPoint {
 			return x;
 		}
 	
-	ArrayList  getX() {
+	//method to get the x array
+	static ArrayList<Double>  getX() {
 		return x;
 	}
 	
-	
-	public static ArrayList setY(ArrayList data) {
+	//create a y array
+	public static ArrayList<Double> setY(ArrayList<Double> data) {
 		int i = 1;
+		//take every 3rd element of the sort starting at 1
 		while (i < data.size()){
 				y.add(data.get(i));
 				i = i + 3;
@@ -32,11 +36,13 @@ public class DataPoint {
 			return y;
 		}
 	
-	ArrayList  getY() {
+	//method to get the y array
+	static ArrayList<Double>  getY() {
 		return y;
 	}
 	
-	public static ArrayList setEY(ArrayList data) {
+	//take every 3rd element of the sort starting at 2
+	public static ArrayList<Double> setEY(ArrayList<Double> data) {
 		int i = 2;
 		while (i < data.size()){
 				ey.add(data.get(i));
@@ -45,14 +51,10 @@ public class DataPoint {
 			return ey;
 		}
 	
-	ArrayList  getEY() {
+	//method to get the ey array
+	static ArrayList<Double>  getEY() {
 		return ey;
 	}
-	
-	
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 
-	}
 
 }

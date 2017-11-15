@@ -2,20 +2,20 @@ package module5;
 
 public class Theory {
 	
-	double n;
+	//initialize variables
+	static double n;
+	double y;
 	
-	void setN(double x) {
+	//method to set n
+	static void setN(double x) {
 		n = x;
 	}
-	public double y(double x) {
+	
+	//method to calculate y=x^n
+	public static double calculateY(double x) {
 		double y = Math.pow(x, n);
 		return y;
 	}
 	
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
 
 }
